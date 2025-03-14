@@ -1,0 +1,277 @@
+Breakpoint 1, list_resize (self=self@entry=0x7ffff7587f20, newsize=newsize@entry=1) at Objects/listobject.c:106
+106	{
+1: new_allocated = <optimized out>
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+108	    Py_ssize_t allocated = self->allocated;
+1: new_allocated = <optimized out>
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+114	    if (allocated >= newsize && newsize >= (allocated >> 1)) {
+1: new_allocated = <optimized out>
+2: allocated = 0
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+130	    new_allocated = ((size_t)newsize + (newsize >> 3) + 6) & ~(size_t)3;
+1: new_allocated = <optimized out>
+2: allocated = 0
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+134	    if (newsize - Py_SIZE(self) > (Py_ssize_t)(new_allocated - newsize))
+1: new_allocated = 4
+2: allocated = 0
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+137	    if (newsize == 0)
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+169	    if (new_allocated <= (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+170	        target_bytes = new_allocated * sizeof(PyObject *);
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 1
+(gdb) n
+171	        items = (PyObject **)PyMem_Realloc(self->ob_item, target_bytes);
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+177	    if (items == NULL) {
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+181	    self->ob_item = items;
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+182	    Py_SET_SIZE(self, newsize);
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+183	    self->allocated = new_allocated;
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+185	    return 0;
+1: new_allocated = 4
+2: allocated = <optimized out>
+3: target_bytes = 32
+4: newsize = 1
+(gdb) n
+_PyList_AppendTakeRefListResize (self=self@entry=0x7ffff7587f20, newitem=newitem@entry=0x7ffff7587f60) at Objects/listobject.c:499
+499	    FT_ATOMIC_STORE_PTR_RELEASE(self->ob_item[len], newitem);
+(gdb) n
+500	    return 0;
+(gdb) n
+PyList_Append (op=op@entry=0x7ffff7587f20, newitem=newitem@entry=0x7ffff7587f60) at Objects/listobject.c:511
+511	        return ret;
+(gdb) n
+_PyImport_GetBuiltinModuleNames () at Python/import.c:2479
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+
+Breakpoint 1, list_resize (self=self@entry=0x7ffff7587f20, newsize=newsize@entry=5) at Objects/listobject.c:106
+106	{
+1: new_allocated = <optimized out>
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+108	    Py_ssize_t allocated = self->allocated;
+1: new_allocated = <optimized out>
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+114	    if (allocated >= newsize && newsize >= (allocated >> 1)) {
+1: new_allocated = <optimized out>
+2: allocated = 4
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+130	    new_allocated = ((size_t)newsize + (newsize >> 3) + 6) & ~(size_t)3;
+1: new_allocated = <optimized out>
+2: allocated = 4
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+134	    if (newsize - Py_SIZE(self) > (Py_ssize_t)(new_allocated - newsize))
+1: new_allocated = 8
+2: allocated = 4
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+137	    if (newsize == 0)
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+169	    if (new_allocated <= (size_t)PY_SSIZE_T_MAX / sizeof(PyObject *)) {
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+170	        target_bytes = new_allocated * sizeof(PyObject *);
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 5
+(gdb) n
+171	        items = (PyObject **)PyMem_Realloc(self->ob_item, target_bytes);
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+177	    if (items == NULL) {
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+181	    self->ob_item = items;
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+182	    Py_SET_SIZE(self, newsize);
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+183	    self->allocated = new_allocated;
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+185	    return 0;
+1: new_allocated = 8
+2: allocated = <optimized out>
+3: target_bytes = 64
+4: newsize = 5
+(gdb) n
+_PyList_AppendTakeRefListResize (self=self@entry=0x7ffff7587f20, newitem=newitem@entry=0x7ffff75a40e0) at Objects/listobject.c:499
+499	    FT_ATOMIC_STORE_PTR_RELEASE(self->ob_item[len], newitem);
+(gdb) n
+500	    return 0;
+(gdb) n
+PyList_Append (op=op@entry=0x7ffff7587f20, newitem=newitem@entry=0x7ffff75a40e0) at Objects/listobject.c:511
+511	        return ret;
+(gdb) n
+_PyImport_GetBuiltinModuleNames () at Python/import.c:2479
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+2479	        Py_DECREF(name);
+(gdb) n
+2468	    for (Py_ssize_t i = 0; inittab[i].name != NULL; i++) {
+(gdb) n
+2469	        PyObject *name = PyUnicode_FromString(inittab[i].name);
+(gdb) n
+2470	        if (name == NULL) {
+(gdb) n
+2474	        if (PyList_Append(list, name) < 0) {
+(gdb) n
+
+Breakpoint 1, list_resize (self=self@entry=0x7ffff7587f20, newsize=newsize@entry=9) at Objects/listobject.c:106
+106	{
+1: new_allocated = <optimized out>
+2: allocated = <optimized out>
+3: target_bytes = <optimized out>
+4: newsize = 9
+
