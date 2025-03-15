@@ -1,0 +1,4 @@
+list_resize - Objects/listobject.c
+Py_SET_SIZE - Include/object.h
+PyMem_Realloc - Objects/obmalloc.c 
+_PyMem.realloc - Objects/mimalloc/alloc-override.c (API de alocação de memoria) https://www.tutorialspoint.com/c_standard_library/c_function_realloc.htm
