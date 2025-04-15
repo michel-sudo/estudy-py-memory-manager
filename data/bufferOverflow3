@@ -1,0 +1,7 @@
+str_list = list("Mundo")  # Equivalente a char str[] = "Mundo"
+buffer = [None] * 3       # Equivalente a char buffer[3]
+print(buffer, len(buffer)) # [None, None, None] 3
+
+buffer = str_list[:]
+print(buffer, len(buffer)) # Saída ['M', 'u', 'n', 'd', 'o'] 5 
+                            # buffer foi redmensionado.
