@@ -1,0 +1,86 @@
+michel@michel-Latitude-3480:~/Git/estudy-py-memory-manager/src/codigos-c$ gdb -q overflow
+Reading symbols from overflow...
+(gdb) break 11
+Ponto de parada 1 at 0x1207: file buffer_overflow.c, line 11.
+(gdb) break 13
+Ponto de parada 2 at 0x121a: file buffer_overflow.c, line 13.
+(gdb) run
+Starting program: /home/michel/Git/estudy-py-memory-manager/src/codigos-c/overflow 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+vetor antes: Mundo
+buffer antes: 
+
+Breakpoint 1, vulnerable () at buffer_overflow.c:11
+
+11	    strcpy(buffer, str); 
+(gdb) print &buffer
+$1 = (char (*)[3]) 0x7fffffffdcff
+(gdb) x/3sb buffer
+0x7fffffffdcff:	""
+0x7fffffffdd00:	""
+0x7fffffffdd01:	""
+
+(gdb) print &str
+$2 = (char (*)[6]) 0x7fffffffdd02
+(gdb) x/6sb str
+0x7fffffffdd02:	"Mundo"
+
+(gdb) print &str[0]
+$3 = 0x7fffffffdd02 "Mundo"
+(gdb) print &str[1]
+$4 = 0x7fffffffdd03 "undo"
+(gdb) print &str[2]
+$5 = 0x7fffffffdd04 "ndo"
+(gdb) print &str[3]
+$6 = 0x7fffffffdd05 "do"
+(gdb) print &str[4]
+$7 = 0x7fffffffdd06 "o"
+(gdb) print &str[5]
+$8 = 0x7fffffffdd07 ""
+
+(gdb) continue
+Continuing.
+
+Breakpoint 2, vulnerable () at buffer_overflow.c:13
+13	    size_t tam = sizeof(buffer) / sizeof(buffer[0]);
+
+(gdb) x/3sb buffer
+0x7fffffffdcff:	"Mundo"
+0x7fffffffdd05:	"do"
+0x7fffffffdd08:	""
+
+(gdb) print &buffer[0]
+$9 = 0x7fffffffdcff "Mundo"
+(gdb) print &buffer[1]
+$10 = 0x7fffffffdd00 "undo"
+(gdb) print &buffer[2]
+
+(gdb) print &buffer
+$15 = (char (*)[3]) 0x7fffffffdcff
+
+(gdb) print &str
+$16 = (char (*)[6]) 0x7fffffffdd02
+
+(gdb) print &str[0]
+$17 = 0x7fffffffdd02 "do"
+(gdb) print &str[1]
+$18 = 0x7fffffffdd03 "o"
+(gdb) print &str[2]
+$19 = 0x7fffffffdd04 ""
+(gdb) print &str[3]
+$20 = 0x7fffffffdd05 "do"
+(gdb) print &str[4]
+$21 = 0x7fffffffdd06 "o"
+(gdb) print &str[5]
+$22 = 0x7fffffffdd07 ""
+
+(gdb) continue
+Continuing.
+vetor depois: do
+buffer depois: Mundo
+Tamanho do vetor depois: 2
+Tamanho do buffer depois: 3
+[Inferior 1 (process 18886) exited normally]
+(gdb) 
+
