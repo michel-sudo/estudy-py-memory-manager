@@ -1,5 +1,5 @@
 # estudy-py-memory-manager
-Códigos, dados e imagens presentes no estudo sobre Como o gerenciamento de memória dinâmica das estruturas de dados em Python, dificultam a exploração de falhas do tipo Buffer Overflow.
+Códigos, dados e imagens presentes no estudo sobre Segurança e Desempenho no Gerenciamento de Memória com Estruturas Dinâmicas em Python.
 
 > Ferramentas utilizadas:
 
